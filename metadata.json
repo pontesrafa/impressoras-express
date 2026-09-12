@@ -1,0 +1,6 @@
+{
+  "name": "Impressoras Express",
+  "description": "Assistência técnica especializada em impressoras em Campos dos Goytacazes. Manutenção, suprimentos originais, coleta e entrega com garantia de 90 dias.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
