@@ -3,18 +3,14 @@ import {
   Menu, 
   X, 
   MessageCircle, 
-  Cloud, 
   Clock, 
   MapPin, 
-  ChevronRight
+  ChevronRight,
+  Phone
 } from 'lucide-react';
 import { COMPANY_CONFIG, getWhatsAppLink } from '../data/companyData';
 
-interface HeaderProps {
-  onOpenCloudflareModal: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onOpenCloudflareModal }) => {
+export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -50,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCloudflareModal }) => {
 
   return (
     <>
-      {/* Top utility bar */}
+      {/* Top utility bar - Limpo e Focado no Cliente */}
       <div className="bg-slate-950 text-slate-400 text-xs py-1.5 px-4 border-b border-slate-800/80 hidden md:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
@@ -65,14 +61,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCloudflareModal }) => {
           </div>
 
           <div className="flex items-center gap-4">
-            <button
-              onClick={onOpenCloudflareModal}
-              className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 transition text-[11px] font-semibold py-0.5 px-2 rounded bg-orange-500/10 border border-orange-500/20 cursor-pointer"
-              title="Instruções para postar no Cloudflare Pages"
+            <a 
+              href={`tel:${COMPANY_CONFIG.whatsappNumber}`}
+              className="text-slate-300 hover:text-white flex items-center gap-1 text-xs transition"
             >
-              <Cloud className="w-3.5 h-3.5" />
-              <span>Como Publicar no Cloudflare Pages</span>
-            </button>
+              <Phone className="w-3.5 h-3.5 text-cyan-400" />
+              <span>{COMPANY_CONFIG.phoneFormatted}</span>
+            </a>
+            <span className="text-slate-700">|</span>
             <a 
               href={getWhatsAppLink()} 
               target="_blank" 
@@ -80,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCloudflareModal }) => {
               className="text-emerald-400 hover:text-emerald-300 flex items-center gap-1 font-semibold text-xs"
             >
               <MessageCircle className="w-3.5 h-3.5" />
-              <span>{COMPANY_CONFIG.phoneFormatted}</span>
+              <span>Atendimento WhatsApp</span>
             </a>
           </div>
         </div>
@@ -126,7 +122,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCloudflareModal }) => {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-5 text-xs font-semibold text-slate-300">
+          <nav className="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -139,7 +135,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCloudflareModal }) => {
             ))}
           </nav>
 
-          {/* Action Buttons */}
+          {/* Direct CTA Button */}
           <div className="hidden sm:flex items-center gap-3">
             <a
               href={getWhatsAppLink()}
@@ -148,14 +144,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCloudflareModal }) => {
               className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-emerald-500/20 transition transform hover:-translate-y-0.5"
             >
               <MessageCircle className="w-3.5 h-3.5 fill-white text-transparent" />
-              <span>Orçamento WhatsApp</span>
+              <span>Orçamento Rápido</span>
             </a>
           </div>
 
           {/* Mobile menu trigger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white"
+            className="md:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white ml-2"
             aria-label="Abrir menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -179,27 +175,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCloudflareModal }) => {
               ))}
             </nav>
 
-            <div className="pt-2 flex flex-col gap-2">
+            <div className="pt-2">
               <a
                 href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2"
+                className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
-                <span>Orçamento no WhatsApp</span>
+                <span>Pedir Orçamento no WhatsApp</span>
               </a>
-
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenCloudflareModal();
-                }}
-                className="w-full py-2 px-3 rounded-xl bg-slate-900 border border-slate-800 text-orange-400 font-semibold text-xs flex items-center justify-center gap-1.5"
-              >
-                <Cloud className="w-3.5 h-3.5" />
-                <span>Instruções Cloudflare Pages</span>
-              </button>
             </div>
           </div>
         )}

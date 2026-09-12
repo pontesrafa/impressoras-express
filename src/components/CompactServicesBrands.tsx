@@ -78,13 +78,13 @@ export const CompactServicesBrands: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-2">
               <Wrench className="w-3.5 h-3.5" />
-              Serviços & Marcas Atendidas
+              Especialidades Técnicas
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-heading">
-              O que consertamos com mais rapidez
+              Soluções Completas para a sua Impressora
             </h2>
             <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
-              Diagnóstico técnico preciso, orçamento transparente antes de qualquer serviço e peças de qualidade.
+              Diagnóstico preciso, peças de alta durabilidade e orçamento transparente antes de qualquer reparo.
             </p>
           </div>
 

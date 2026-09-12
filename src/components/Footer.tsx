@@ -4,15 +4,11 @@ import {
   MessageCircle, 
   MapPin, 
   Clock, 
-  Cloud
+  Phone
 } from 'lucide-react';
 import { COMPANY_CONFIG, getWhatsAppLink } from '../data/companyData';
 
-interface FooterProps {
-  onOpenCloudflareModal: () => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onOpenCloudflareModal }) => {
+export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -42,13 +38,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCloudflareModal }) => {
             <a href="#servicos" className="hover:text-cyan-400 transition">Serviços & Marcas</a>
             <a href="#coleta" className="hover:text-cyan-400 transition">Coleta & Garantia</a>
             <a href="#contato" className="hover:text-cyan-400 transition">Dúvidas & Contato</a>
-            <button
-              onClick={onOpenCloudflareModal}
-              className="text-orange-400 hover:text-orange-300 transition flex items-center gap-1 font-semibold cursor-pointer"
-            >
-              <Cloud className="w-3.5 h-3.5" />
-              <span>Publicar no Cloudflare Pages</span>
-            </button>
           </div>
 
           {/* Social Channels */}

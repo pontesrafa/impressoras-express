@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { CompactServicesBrands } from './components/CompactServicesBrands';
@@ -6,17 +6,14 @@ import { CompactBenefits } from './components/CompactBenefits';
 import { CompactFaqContact } from './components/CompactFaqContact';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
-import { CloudflareDeployModal } from './components/CloudflareDeployModal';
 
 export default function App() {
-  const [cloudflareModalOpen, setCloudflareModalOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-white">
       {/* Navigation Header */}
-      <Header onOpenCloudflareModal={() => setCloudflareModalOpen(true)} />
+      <Header />
 
-      {/* Main Content Sections - Compact & Direct */}
+      {/* Main Content Sections - Compact, Clean & Conversion-Focused */}
       <main className="flex-1">
         {/* Hero + Instant WhatsApp Quote Tool */}
         <Hero />
@@ -24,7 +21,7 @@ export default function App() {
         {/* Services & Brands - Scannable 4 core services + top models */}
         <CompactServicesBrands />
 
-        {/* Benefits Bento - Pickup/Delivery in Campos, 90-day warranty & Special emergency hours */}
+        {/* Benefits - Pickup/Delivery in Campos, 90-day warranty & Special emergency hours */}
         <CompactBenefits />
 
         {/* Frequently Asked Questions + Direct WhatsApp / Instagram contact */}
@@ -32,16 +29,10 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer onOpenCloudflareModal={() => setCloudflareModalOpen(true)} />
+      <Footer />
 
       {/* Floating WhatsApp Action */}
       <FloatingWhatsApp />
-
-      {/* Cloudflare Pages Tutorial & Deployment Modal */}
-      <CloudflareDeployModal
-        isOpen={cloudflareModalOpen}
-        onClose={() => setCloudflareModalOpen(false)}
-      />
     </div>
   );
 }
